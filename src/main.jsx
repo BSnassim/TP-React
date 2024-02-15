@@ -6,13 +6,15 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import ClassComponent from './Components/ClassComponent.jsx'
 import FunctionalComponent from './Components/FunctionalComponent.jsx'
 import Ecmascript from './Ecmascript/Ecmascript.jsx'
+import Events from './Components/Events.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/", Component: App, children: [
       { path: "/ecmascript", Component: Ecmascript},
       { path: "/ClassComponent", Component:ClassComponent},
-      { path: "/FunctionalComponent", Component:FunctionalComponent}
+      { path: "/FunctionalComponent", Component:FunctionalComponent},
+      { path: "/Events", Component: Events},
     ]
   },
 
