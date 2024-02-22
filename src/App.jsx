@@ -25,7 +25,7 @@ function App() {
       <Suspense fallback={LoadingComponent()}>
         <Routes>
           <Route path="/" Component={NavBar}>
-            <Route path="/" Component={Home} />
+            <Route index Component={Home} />
             <Route path="/ecmascript" Component={Ecmascript} />
             <Route path="/events" Component={Events} />
             <Route
