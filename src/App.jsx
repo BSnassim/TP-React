@@ -7,15 +7,25 @@ function App() {
   const NavBar = React.lazy(() => import("./Components/NavBar"));
   const Ecmascript = React.lazy(() => import("./Ecmascript/Ecmascript"));
   const Events = React.lazy(() => import("./Components/Events"));
+  const EventDetails = React.lazy(() => import("./Components/EventDetails"));
   const FunctionalComponent = React.lazy(() =>
     import("./Components/FunctionalComponent")
   );
-  const ClassComponent = React.lazy(() => import("./Components/ClassComponent"));
+  const ClassComponent = React.lazy(() =>
+    import("./Components/ClassComponent")
+  );
   const NotFound = React.lazy(() => import("./Components/NotFound"));
   const Home = React.lazy(() => import("./Components/Home"));
   const LoadingComponent = () => {
     return (
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
         <p>Loading...</p>
       </div>
     );
@@ -28,6 +38,7 @@ function App() {
             <Route index Component={Home} />
             <Route path="/ecmascript" Component={Ecmascript} />
             <Route path="/events" Component={Events} />
+            <Route path="/eventDetails/:name" Component={EventDetails} />
             <Route
               path="/functionalComponent/:id/:number"
               Component={FunctionalComponent}
