@@ -1,0 +1,22 @@
+{
+  "events": [
+    {
+      "name": "event 3",
+      "description": "qsdflkjsqm",
+      "price": "12",
+      "nbTickets": "32",
+      "nbParticipants": 0,
+      "img": "event3.jpg",
+      "id": 3
+    },
+    {
+      "name": "event 1",
+      "description": "sdf",
+      "price": "12",
+      "nbTickets": "32",
+      "nbParticipants": 0,
+      "img": "event2.jpg",
+      "id": 4
+    }
+  ]
+}

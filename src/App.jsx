@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
   );
   const NotFound = React.lazy(() => import("./Components/NotFound"));
   const Home = React.lazy(() => import("./Components/Home"));
+  const AddEvent = React.lazy(() => import("./Components/AddEvent"));
   const LoadingComponent = () => {
     return (
       <div
@@ -37,8 +38,11 @@ function App() {
           <Route path="/" Component={NavBar}>
             <Route index Component={Home} />
             <Route path="/ecmascript" Component={Ecmascript} />
-            <Route path="/events" Component={Events} />
-            <Route path="/eventDetails/:name" Component={EventDetails} />
+            <Route path="/events" element={<Outlet/>}>
+              <Route index Component={Events} />
+              <Route path="add" Component={AddEvent} />
+              <Route path=":id" Component={EventDetails} />
+            </Route>
             <Route
               path="/functionalComponent/:id/:number"
               Component={FunctionalComponent}

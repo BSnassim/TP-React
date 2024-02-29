@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import eventsList from "../../data/events.json";
+import EventsApi from "../api/EventsApi";
 
 const EventDetails = () => {
-  const { name } = useParams();
-  const eventDetails = eventsList.find((event) => event.name === name);
+  const { id } = useParams();
+  const [eventDetails,setEventDetails] = useState();
+  
+  useEffect(() => {
+    EventsApi.getEvents(id).then((data) => {
+      setEventDetails(data);
+    });
+  }, []);
   return (
     <div>
       {eventDetails && (

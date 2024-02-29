@@ -1,10 +1,11 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Event(props) {
   const [e, setEvent] = useState(props.e);
+
   const bookEvent = () => {
     setEvent((e) => {
       if (e.nbTickets > 0) {
@@ -13,7 +14,7 @@ export default function Event(props) {
         newProp.nbParticipants++;
         props.showAlert();
         return newProp;
-    }
+      }
     });
   };
   const likeEvent = () => {
@@ -29,10 +30,11 @@ export default function Event(props) {
         <Card.Img
           variant="top"
           src={e.nbTickets == 0 ? `images/sold_out.png` : `images/${e.img}`}
+          alt={e.img}
         />
         <Card.Body>
           <Card.Title>
-            <Link to={`/eventDetails/${e.name}`}>{e.name}</Link>
+            <Link to={`${e.id}`}>{e.name}</Link>
           </Card.Title>
           <Card.Text>Price: {e.price}</Card.Text>
           <Card.Text>Number of tickets: {e.nbTickets}</Card.Text>
@@ -50,6 +52,13 @@ export default function Event(props) {
             onClick={likeEvent}
           >
             {e.like ? "Dislike" : "Like"}
+          </Button>
+          <Button
+            style={{ marginLeft: "5px" }}
+            variant="danger"
+            onClick={() => props.delete(e.id)}
+          >
+            Delete
           </Button>
         </Card.Body>
       </Card>
